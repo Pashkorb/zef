@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/Scripts/west.exe",
+            "args": ["build", "-b", "blackpill_f401cc", "application", "-d", "build"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "clean",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/Scripts/west.exe",
+            "args": ["build", "-d", "build", "-t", "clean"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "flash",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/Scripts/west.exe",
+            "args": [
+                "flash", "-d", "build", "-r", "openocd", "--",
+                "--config", "openocd/stm32f401cc-stlink.cfg", "--verify"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

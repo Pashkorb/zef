@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "STM32",
+            "type": "cortex-debug",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/zephyr/zephyr.elf",
+            "servertype": "openocd",
+            "serverpath": "${workspaceFolder}/tools/zephyr-sdk-1.0.1/hosttools/openocd/bin/openocd.exe",
+            "searchDir": [
+                "${workspaceFolder}/tools/zephyr-sdk-1.0.1/hosttools/openocd/share/openocd/scripts"
+            ],
+            "configFiles": [
+                "${workspaceFolder}/openocd/stm32f401cc-stlink.cfg"
+            ],
+            "armToolchainPath": "${workspaceFolder}/tools/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin",
+            "toolchainPrefix": "arm-zephyr-eabi",
+            "rtos": "Zephyr",
+            "preLaunchTask": "build"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+#include <zephyr/dt-bindings/gpio/gpio.h>
+
+/ {
+    aliases {
+        protocol-uart = &usart2;
+    };
+
+    zephyr,user {
+        reaction-input-gpios = <&gpiob 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        reaction-output-gpios = <&gpiob 1 GPIO_ACTIVE_HIGH>;
+        reaction-delay-ms = <1000>;
+    };
+};
+
+&usart2 {
+    pinctrl-0 = <&usart2_tx_pa2 &usart2_rx_pa3>;
+    pinctrl-names = "default";
+    current-speed = <115200>;
+    data-bits = <8>;
+    parity = "none";
+    stop-bits = "1";
+    status = "okay";
+};
